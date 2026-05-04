@@ -117,9 +117,10 @@ def pridat_ukol(ukoly: List[Dict[str, str]], nazev: str, popis: str) -> List[Dic
         list: Aktualizovaný seznam úkolů.
     """
 
-    # kontrola, zda úkol s tímto názvem a popisem již existuje - pokud ano, vypíše varování, ale přesto přidá nový úkol
+    # kontrola, zda úkol s tímto názvem a popisem již existuje
     if any(u["nazev"] == nazev and u["popis"] == popis for u in ukoly):
         print(" ! POZOR: Úkol s tímto názvem a popisem již existuje.")
+        # return ukoly  # pokud nechceme přidat duplicitní úkol, můžeme odkomentovat tuto řádku
     
     # přidání úkolu do seznamu
     ukoly.append({"nazev": nazev, "popis": popis})
@@ -145,7 +146,7 @@ def odstranit_ukol(ukoly: List[Dict[str, str]], cislo: int) -> List[Dict[str, st
     """Odstraní úkol ze seznamu podle zadaného čísla.
     Args:
         ukoly (list): Aktuální seznam úkolů.
-        cislo (int): Číslo úkolu k odstranění (1-based index).
+        cislo (int): Číslo úkolu k odstranění (číslování od 1).
     Returns:
         list: Aktualizovaný seznam úkolů.
     """
